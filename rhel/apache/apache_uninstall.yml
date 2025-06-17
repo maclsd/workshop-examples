@@ -1,5 +1,5 @@
 ---
-- name: Apache server installed
+- name: Apache server uninstalled
   hosts: web
 
   tasks:
