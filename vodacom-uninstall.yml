@@ -3,11 +3,6 @@
   hosts: web
 
   tasks:
-  - name: stop apache webserver
-    ansible.builtin.service:
-      name: httpd
-      state: stopped
-  
   - name: uninstall apache webserver
     ansible.builtin.package:
       name: httpd
