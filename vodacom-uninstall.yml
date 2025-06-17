@@ -1,0 +1,24 @@
+---
+- name: Vodacom Uninstall Apache
+  hosts: web
+
+  tasks:
+  - name: stop apache webserver
+    ansible.builtin.service:
+      name: httpd
+      state: stopped
+  
+  - name: uninstall apache webserver
+    ansible.builtin.package:
+      name: httpd
+      state: absent
+
+  - name: close firewall for http and https
+    ansible.posix.firewalld:
+      service: "{{ item }}"
+      permanent: true
+      state: disabled
+    loop:
+      - http
+      - https
+
